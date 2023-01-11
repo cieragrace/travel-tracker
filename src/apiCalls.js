@@ -3,3 +3,5 @@ function getAPIData(info) {
     .then((res) => res.json())
   return fetchedInfo
 }
+
+export { getAPIData}
