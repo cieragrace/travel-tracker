@@ -109,7 +109,7 @@ section {
    .traveler-page-container {
     display: flex;
     flex-direction: column;
-    background-image: url(/src/images/kauai-hawaii-1200x718.jpg);
+    background-image: url(/src/images/traveler-page-back.jpg);
     background-size:cover;
     background-repeat: no-repeat;
     opacity: 75%;
@@ -200,6 +200,8 @@ section {
     font-size: 50px;
     height: 75px;
     color: antiquewhite;
+    -webkit-text-stroke: 1px black;
+	  -webkit-text-fill-color: white;
    }
 
    .never-text {
@@ -231,6 +233,8 @@ section {
     color: black;
     font-size: 40px;
     margin-top: 10px;
+    -webkit-text-stroke: 1px black;
+	  -webkit-text-fill-color: white;
    }
 
    .your-trips {
