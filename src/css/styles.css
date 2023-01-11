@@ -8,7 +8,7 @@ html {
   height: 100vh;
 }
 
-.login-page-container {
+/* .login-page-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
@@ -104,4 +104,182 @@ section {
     grid-column: 3;
     grid-row: 3;
   }
-  
+   */
+
+   .traveler-page-container {
+    display: flex;
+    flex-direction: column;
+    background-image: url(/src/images/kauai-hawaii-1200x718.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    opacity: 75%;
+    height: 100vh;
+    width: 100vw;
+   }
+
+   .header {
+    flex-direction: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20vh;
+    width: 100vw;
+   }
+
+   .travelers-page-logo {
+    /* background-image: url(/src/images/Screenshot\ 2023-01-10\ at\ 8.49.53\ PM.png); */
+    max-height: 200px;
+    height: 150px;
+    width: 200px; 
+    max-width: 220px; 
+    font-size: 100px;
+    font-weight: lighter;
+    border: 10px solid antiquewhite;
+    color: antiquewhite;
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-top: 20px;
+    text-align: center;
+    opacity: 50%;
+   }
+
+   nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px black;
+    position: fixed;
+    top: 0;
+    margin-left: 300px;
+    margin-top: 50px;
+    width: 85vw;
+    height: 100px;
+   }
+
+   .nav-title {
+    font-size: x-large;
+   }
+
+
+   input {
+    margin: 30px;
+    width: 250px;
+    height: 50px;
+   }
+
+   p {
+    font-size: small;
+   }
+
+   .leave-text {
+    margin-left: 100px;
+   }
+
+   .how-many-text {
+    margin-left: 100px;
+   }
+
+   .middle-section {
+    display: flex;
+    flex-direction: row;
+	  align-items: center;
+    height: 90vh;
+    width: 100vw;
+   }
+
+   .left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 40vw;
+    border: 1px black solid;
+    border-radius: 10px;
+    height: 700px;
+   }
+
+   h1 {
+    font-size: 50px;
+    height: 75px;
+    color: antiquewhite;
+   }
+
+   .never-text {
+    margin-top: 20px;
+    font-weight: bolder;
+   }
+
+   .list-destinations {
+    width: 525px;
+    height: 500px;
+    margin-top: 25px;
+    margin-left: 100px;
+    border: 2px solid black;
+    padding-left: 60px;
+   }
+
+   .right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 60vw;
+    border: 1px black solid;
+    border-radius: 10px;
+    padding-left: 50px;
+    height: 700px;
+   }
+
+   h2 {
+    color: black;
+    font-size: 40px;
+    margin-top: 10px;
+   }
+
+   .your-trips {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+	  align-items: center;
+   }
+
+   .trips-divs {
+    border: 2px solid black;
+    height: 500px;
+    width: 365px;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+   }
+
+   .rating-bar {
+    width: 55vw;
+    height: 75px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: 20px;
+   }
+
+   footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+	  align-items: center;
+    height: 10vh;
+   }
+
+   .cost-and-fee {
+    width: 30vw;
+    height: 100px;
+    border: 1px solid black;
+    font-size: 50px;
+    color: white;
+    margin-left: 300px;
+   }
+
+   .annual-spent {
+    margin-right: 445px;
+    margin-bottom: 40px;
+    color: white;
+   }
+
+
+
