@@ -184,4 +184,27 @@ describe('Traveler', () => {
     it('should have a traveler type', function () {
       expect(traveler3.travelers.travelerType).to.equal("history buff")
     })
+
+    it('should return traverlers trips by id number', function () {
+      expect(traveler2.findTravelersFlights()).to.deep.equal(
+        [{
+        userID: 2,
+        destinationID: 10,
+        travelers: 5,
+        date: "2019/09/27",
+        duration: 13,
+        status: "approved",
+        suggestedActivities: [ ] 
+        }, 
+        {
+        userID: 2,
+        destinationID: 6,
+        travelers: 6,
+        date: "2020/3/28",
+        duration: 10,
+        status: "approved",
+        suggestedActivities: [ ]
+      }]
+    )
+  })
 })
