@@ -139,14 +139,16 @@ section {
     margin-left: 20px;
     margin-top: 20px;
     text-align: center;
-    opacity: 50%;
+    opacity: 85%;
    }
 
    nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: solid 1px black;
+    border-top: 15px solid whitesmoke;
+    border-bottom: 15px solid whitesmoke;
+    opacity: 85%;
     position: fixed;
     top: 0;
     margin-left: 300px;
@@ -156,7 +158,11 @@ section {
    }
 
    .nav-title {
-    font-size: x-large;
+    font-size: 40px;
+    -webkit-text-stroke: 2px black;
+	  -webkit-text-fill-color: white;
+    margin-left: 40px;
+    font-weight: bold;
    }
 
 
@@ -166,16 +172,17 @@ section {
     height: 50px;
    }
 
-   p {
-    font-size: small;
-   }
+  select {
+    margin: 30px;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+  }
 
    .leave-text {
-    margin-left: 100px;
-   }
-
-   .how-many-text {
-    margin-left: 100px;
+    margin-left: 20px;
+    font-size: medium;
+    color: black;
    }
 
    .middle-section {
@@ -190,7 +197,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    width: 40vw;
+    width: 35vw;
     border: 1px black solid;
     border-radius: 10px;
     height: 700px;
@@ -198,68 +205,114 @@ section {
 
    h1 {
     font-size: 50px;
+    font-weight: bold;
     height: 75px;
     color: antiquewhite;
+    margin-top: 20px;
     -webkit-text-stroke: 1px black;
 	  -webkit-text-fill-color: white;
-   }
-
-   .never-text {
-    margin-top: 20px;
-    font-weight: bolder;
-   }
-
-   .list-destinations {
-    width: 525px;
-    height: 500px;
-    margin-top: 25px;
-    margin-left: 100px;
-    border: 2px solid black;
     padding-left: 60px;
+   }
+
+   .list-trips {
+    width: 525px;
+    height: 600px;
+    margin-top: 25px;
+    margin-left: 80px;
+    border: 5px solid whitesmoke;
+    border-top: 50px solid whitesmoke;
+    padding-left: 20px;
+    overflow: auto;
+   }
+
+   ul {
+    color: aliceblue;
+    font-size: larger;
+    list-style: none;
+    opacity: 100%;
+    text-align: center;
+   }
+
+   li {
+    list-style: none;
+    font-weight: bolder;
+    text-align: center;
+    margin: 10px 10px 10px 0;
+   }
+
+   .trips-divs-container {
+    background-color: black;
+    opacity: 75%;
+    border: 5px solid whitesmoke;
+    border-radius: 10px;
+    height: 200px;
+    width: 500px;
+    margin-top: 20px;
+    margin-right: 15px;
+    overflow: auto;
+   }
+
+   p {
+    font-size: xx-large;
+    color: aliceblue;
+   }
+
+   .cost-and-fee {
+    width: 30vw;
+    height: 150px;
+    border: 1px solid black;
+    font-size: 50px;
+    color: antiquewhite;
+    font-weight: bold;
+    margin-bottom: 70px;
+    text-align: center;
    }
 
    .right-side {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    width: 60vw;
+    width: 65vw;
     border: 1px black solid;
     border-radius: 10px;
     padding-left: 50px;
     height: 700px;
+    overflow: auto;
    }
 
    h2 {
     color: black;
     font-size: 40px;
     margin-top: 10px;
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 2px black;
 	  -webkit-text-fill-color: white;
    }
 
-   .your-trips {
+  .list-destinations {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-	  align-items: center;
    }
 
-   .trips-divs {
-    border: 2px solid black;
-    height: 500px;
+   .destinations {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border: 5px solid whitesmoke;
+    background-color: darkslategray;
+    opacity: 50%;
+    border-radius: 10px;
+    height: 600px;
     width: 365px;
     margin-top: 20px;
     margin-left: 15px;
     margin-right: 15px;
    }
 
-   .rating-bar {
-    width: 55vw;
-    height: 75px;
-    border: 2px solid black;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-left: 20px;
+   .names-of-destinations {
+    text-align: center;
+    margin-top: 25px;
+    font-weight: bolder;
    }
 
    footer {
@@ -270,20 +323,15 @@ section {
     height: 10vh;
    }
 
-   .cost-and-fee {
-    width: 30vw;
-    height: 100px;
-    border: 1px solid black;
-    font-size: 50px;
-    color: antiquewhite;
-    margin-left: 300px;
-   }
-
    .annual-spent {
     margin-right: 445px;
     margin-bottom: 40px;
     color: antiquewhite;
    }
+
+   .hidden {
+    display: none;
+  }
 
 
 

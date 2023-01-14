@@ -100,7 +100,7 @@ describe('Traveler', () => {
         alt: "opera house and city buildings on the water with boats"
         },
         {
-        id: 4,
+        id: 28,
         destination: "Cartagena, Colombia",
         estimatedLodgingCostPerDay: 65,
         estimatedFlightCostPerPerson: 350,
@@ -154,9 +154,10 @@ describe('Traveler', () => {
         estimatedFlightCostPerPerson: 450,
         image: "https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80"
         }]
-    }
-  })
+      }
+   })
 
+   // traveler
     it('should be a function', function () {
       expect(Traveler).to.be.a('function');
     });
@@ -204,7 +205,27 @@ describe('Traveler', () => {
         duration: 10,
         status: "approved",
         suggestedActivities: [ ]
-      }]
-    )
+        }]
+      )
+    })
+
+    it('should return the destination name when trip id is provided', function() {
+      expect(traveler2.getDestinationInfoPerID("destination")).to.deep.equal(["Jakarta, Indonesia", "Toronto, Canada"])
+    })
+
+    it('should return the destination cost per day when trip id is provided', function() {
+      expect(traveler1.getDestinationInfoPerID("estimatedLodgingCostPerDay")).to.deep.equal([65])
+    })
+
+    it('should return the destination flight cost per person when trip id is provided', function() {
+      expect(traveler1.getDestinationInfoPerID("estimatedFlightCostPerPerson")).to.deep.equal([350])
+    })
+
+    it('should calculate the total cost of a trip', function() {
+      expect(traveler1.getTripTotal()).to.equal(2227.5)
+    })
+
+    // it('should access and return destination id', function () {
+    //   expect(traveler1.getDestinationsInfo("destination")).to.equal()
+    // })
   })
-})

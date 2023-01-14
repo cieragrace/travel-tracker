@@ -30,32 +30,76 @@
     <header class="header">
       <section class="travelers-page-logo">ST</section>
       <nav>
-        <p class="nav-title">Ready to plan your next vacation? </p>
-        <p class="leave-text">Leave: </p>
-        <input class="start-date picker-box" type="date">
-        <p>Return: </p>
-        <input class="end-date picker-box" type="date">
-        <p class="how-many-text">How many? </p>
-        <input class="number-guests" type="number">
+        <p class="nav-title">Plan your next vacation: </p>
+        <p class="leave-text">Departure Day</p>
+        <input class="start-date picker-box" id="datePicker" type="date">
+        <select class="dropdown" id="numDays" name="Number-of-Days">
+          <option class="dropdown-item" value="0">Number of Days</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="9">10</option>
+          <option value="9">11</option>
+          <option value="9">12</option>
+          <option value="9">13</option>
+          <option value="9">14</option>
+          <option value="9">15</option>
+          <option value="9">16</option>
+          <option value="9">17</option>
+          <option value="9">18</option>
+          <option value="9">19</option>
+          <option value="9">20</option>
+          <option value="9">21</option>
+          <option value="9">22</option>
+        </select>
+        <select class="dropdown" id="numPeople" name="Number-of-Travelers">
+          <option class="dropdown-item" value="0">Number of Travelers</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="9">10</option>
+        </select>
+        <button type="click" class="plan-button" id="planButton">Show Trips</button>
       </nav>
     </header>
     <section class="middle-section">
       <article class="left-side">
-        <h1 class="never-text">Never Stop Exploring</h1>
-        <section class="list-destinations"></section>
+        <h1>Your Past Trips</h1>
+        <section class="list-trips">
+          <div class="trips-divs-container">
+            <p class="trips-divs" id="tripDivs1"></p>
+            <ul class="trips-info" id="tripInfo1"></ul>
+          </div>
+          <div class="trips-divs-container">
+            <p class="trips-divs" id="tripDivs2"></p>
+            <ul class="trips-info" id="tripInfo2"></ul>
+          </div>
+          <div class="trips-divs-container">
+            <p class="trips-divs" id="tripDivs3"></p>
+            <ul class="trips-info" id="tripInfo3"></ul>
+          </div>
+        </section>
       </article>
       <section class="right-side">
-        <h2>Your Trips</h2>
-        <section class="your-trips">
-          <ul class="trips-divs" id="tripDivs1"></ul>
-          <ul class="trips-divs" id="tripDivs2"></ul>
-          <ul class="trips-divs" id="tripDivs3"></ul>
+        <h2 class=""never-text>Never Stop Exploring</h2>
+        <section class="list-destinations" id="">
         </section>
-        <div class="rating-bar"></div>
       </section>
     </section>
     <footer>
-      <section class="cost-and-fee">$$$$$</section>
+      <section class="cost-and-fee" id="annualTripCost">Yearly Trips Cost: </section>
       <h1 class="annual-spent">spent/saved</h1>
     </footer>
   </section>
