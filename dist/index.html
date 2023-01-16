@@ -16,9 +16,10 @@
     <section class="grid-box five" id="form">
       <article class="formBox">
         <h1>Please Enter Your Log In Info</h1>
-        <input role="tab" aria-selected="true" class="username" id="userName" type="text" placeholder="username">
-        <input role="tab" aria-selected="true" class="password" id="password" type="text" placeholder="password">
-        <button class="login-button" id="loginButton">all set</button>
+        <p class="login-error-message" id="loginError">Please Enter Valid Login Credentials</p>
+        <input class="username" id="userName" type="text" placeholder="username">
+        <input class="password" id="password" type="text" placeholder="password">
+        <button class="login-button" id="loginButton">All Set</button>
       </article>
     </section>
     <section class="grid-box six"></section>
@@ -96,7 +97,7 @@
         </section>
       </article>
       <section class="right-side">
-        <h2 class="never-text" >Never Stop Exploring</h2>
+        <h2 class="never-text" id="displayName">Never Stop Exploring</h2>
         <section class="list-destinations" id=""></section>
         <section class="list-destination-costs" id="destinationCosts"></section>
       </section>

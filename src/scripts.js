@@ -4,20 +4,19 @@ import Traveler from './traveler';
 import TravelerRepository from './TravelerRepository'
 import * as dayjs from 'dayjs';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-
-
 //---------Global Variables------------
 
+let postTripButton
 let travelers
 let trips
 let destinations
 let currentTraveler
-let today = new Date()
+let allTravelers
+let today = new Date ()
 
 //---------Query Selectors--------------
 let loginPage = document.querySelector('#loginContainer')
+let loginPageError = document.querySelector('#loginError')
 let travelersPage = document.querySelector('#travelersPageContainer')
 let loginButton = document.querySelector('#loginButton')
 let trip1 = document.querySelector("#tripDivs1")
@@ -32,18 +31,23 @@ let pickedDate = document.querySelector('#datePicker')
 let planButton = document.querySelector('#planButton')
 let destinationsDiv = document.querySelector('.list-destinations')
 let destinationCosts = document.querySelector(".list-destination-costs")
-let postTripButton = document.querySelector('.destination-cost')
 let userNameInput = document.querySelector('#userName')
 let passwordInput = document.querySelector('#password')
+let displayTravelerName = document.querySelector('#displayName')
+let tripsContainer = document.querySelector('.list-trips')
 
 //---------Event Listeners--------------
+
 window.addEventListener("load", getAllData)
 planButton.addEventListener("click", displayFututeTripTotals)
-loginButton.addEventListener("click", function () {
-  // validateUser()
-  openTravelerPage()
+loginButton.addEventListener("click", function (event) {
+  event.preventDefault
+  findUser()
+  // openTravelerPage()
+  // displayingTravelersFlights()
+  // displayPossibleDestinations()
 })
-postTripButton.on("click", postNewTrip)
+// postTripButton.addEventListener("click", postNewTrip)
 
 //-----------Functions-------------------
 
@@ -53,25 +57,47 @@ function getAllData() {
       travelers = new TravelerRepository(data[0])
       trips = data[1]
       destinations = data[2]
+      addUsername()
       loadPage()
     })
     .catch(err => console.log("To err is human", err))
 }
 
-// function validateUser() {
-// }
-
-
-function getTraveler(tripsData, destinationData) {
-  let randomIndex = Math.floor(Math.random() * travelers.data.travelers.length)
-  let randomUser = travelers.data.travelers[randomIndex - 1]
-  currentTraveler = new Traveler(randomUser, trips, destinations)
+function addUsername() {
+  return allTravelers = travelers.data.travelers.forEach(traveler => {
+    traveler.userName = `traveler${traveler.id}`
+  })
 }
 
+function findUser() {
+  const validUser = travelers.data.travelers.find(traveler => {
+    return traveler.userName === userNameInput.value
+    // loginPageError.classList.add("add")
+  })
+  console.log("Valid:", validUser)
+  currentTraveler = new Traveler(validUser, trips, destinations)
+  console.log(currentTraveler)
+  openTravelerPage()
+  displayingTravelersFlights()
+  displayPossibleDestinations()
+  // return findUser
+
+}
+
+
+// function getTraveler(tripsData, destinationData) {
+//   let randomIndex = Math.floor(Math.random() * travelers.data.travelers.length)
+//   let randomUser = travelers.data.travelers[randomIndex - 1]
+//   currentTraveler = new Traveler(randomUser, tripsData, destinationData)
+// }
+
 function enableLoginButton() {
-if (userNameInput.value && passwordInput.value) {
+if (userNameInput.value &&
+   passwordInput.value === "travel") {
+    loginPageError.classList.add("hidden")
   loginButton.disabled = false
 } else {
+
   loginButton.disabled = true
   }
 }
@@ -79,11 +105,14 @@ if (userNameInput.value && passwordInput.value) {
 function openTravelerPage() {
   loginPage.classList.add('hidden')
   travelersPage.classList.remove('hidden')
-  // currentTraveler.displayPossibleDestinations()
   }
 
 function displayingTravelersFlights() {
-  let travelersTrips = currentTraveler.findTravelersFlights()
+    const travelersTrips = currentTraveler.tripsData.trips.filter(trip => {
+      return trip.userID === currentTraveler.travelers.id
+    })
+  // let travelersTrips = currentTraveler.findTravelersFlights()
+  // console.log('travelersTrips', travelersTrips)
   let destinationName = currentTraveler.getDestinationInfoPerID("destination")
   trip1.innerHTML += `<li>${destinationName[0]}</li>`
   trip1info.innerHTML += `<li>on ${travelersTrips[0].date}</li>
@@ -108,12 +137,12 @@ function enablePlanButton() {
   }
   }
 
+ setInterval(enableLoginButton, 500)
  setInterval(enablePlanButton, 500);
 
 function displayPossibleDestinations() {
   // const possibleTrips = currentTraveler.getDestinationsInfo("destination")
   const possibleTrips = currentTraveler.destinationData.destinations
-  // console.log(possibleTrips)
   const eachDest = possibleTrips.forEach(destination => {
     const destinationContainer = document.createElement("div")
     destinationContainer.classList.add("destinations")
@@ -127,6 +156,29 @@ function displayPossibleDestinations() {
   })
 }
 
+// function displayingTravelersFlights() {
+//     const travelersTrips = currentTraveler.tripsData.trips.filter(trip => {
+//       return trip.userID === currentTraveler.travelers.id
+//   })
+//     const eachTrip = travelersTrips.forEach(trip => {
+//       // let destinationName = currentTraveler.getDestinationInfoPerID("destination")
+//       const tripBox = document.createElement("div")
+//     // tripBox.setAttribute("id", destination.id)
+//       tripBox.classList.add("trips-divs-container")
+//       tripsContainer.appendChild(tripBox)
+//       const tripBoxp = document.createElement("p")
+//       tripBoxp.classList.add("trips-divs")
+//       tripBoxp.innerHTML += `<li>${destinationName}</li>`
+//       tripBox.appendChild(tripBoxp)
+//       const tripBoxUL = document.createElement("ul")
+//       tripBoxUL.classList.add("trips-info")
+//       tripBoxUL.innerHTML += `<li>on ${travelersTrips[0].date}</li>
+//       <li>with ${travelersTrips.travelers} people</li>
+//       <li>for ${travelersTrips.duration} days</li>`
+//       tripBox.appendChild(tripBoxUL)
+//     })
+//   }
+
 function displayFututeTripTotals() {
   if (pickedDate.value && numDays.value && numPeople.value) {
   const possibleTrips = currentTraveler.destinationData.destinations
@@ -137,43 +189,46 @@ function displayFututeTripTotals() {
     const totalCost = (estFlightCost + estLodgingCost) * 1.1
     console.log(totalCost)
     const eachTripCost = document.createElement("button")
+    eachTripCost.setAttribute("id", destination.id)
     eachTripCost.classList.add("destination-cost")
     eachTripCost.innerHTML += `Take a trip with ${numPeople.value} friends for ${numDays.value} days for only $${totalCost.toFixed(2)}`
     destinationCosts.appendChild(eachTripCost)
+    postTripButton = document.querySelector('.destination-cost')
+    postTripButton.addEventListener("click", postNewTrip)
     })
   } 
 }
 
 function postNewTrip(event) {
-  if (postTripButton) {
+  console.log(event.target)
     event.preventDefault()
     const numTravelers = numPeople.value
     const tripLength = numDays.value
     const date = pickedDate.value
     if(numTravelers && tripLength && date) {
+      console.log("trips;", trips)
+      console.log("length:", trips.length)
       const newData = {
-        id: 666,
-        userID: traveler.id,
-        destinationID: currentTraveler.destinationData.destinations.id,
+        id: trips.trips.length + 1,
+        userID: currentTraveler.travelers.id,
+        destinationID: Number(event.target.id),
         travelers: numTravelers,
-        date: date,
+        date: date.split("-").join("/"),
         duration: tripLength,
         status: "pending",
         suggestedActivities: []
       }
-      errorBox.classList.add("hidden")
+      // errorBox.classList.add("hidden")
       updateAPIData(newData, 'trips')
-    } else {
-      errorBox.classList.remove("hidden")
+      // errorBox.classList.remove("hidden")
     }
   }
-}
 
 function loadPage() {
-getTraveler()
+// addUsername()
 enableLoginButton()
-displayingTravelersFlights()
-displayPossibleDestinations()
+// displayPossibleDestinations()
 enablePlanButton()
 displayFututeTripTotals()
+// validateUser()
 }

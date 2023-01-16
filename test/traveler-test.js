@@ -225,6 +225,10 @@ describe('Traveler', () => {
       expect(traveler1.getTripTotal()).to.equal(2227.5)
     })
 
+    it('should give each traveler a userName based on their id number', function () {
+      expect(traveler1.addUsername()).to.equal('traveler1')
+    })
+
     // it('should access and return destination id', function () {
     //   expect(traveler1.getDestinationsInfo("destination")).to.equal()
     // })

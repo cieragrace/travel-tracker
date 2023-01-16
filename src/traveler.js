@@ -36,9 +36,6 @@ class Traveler {
     return Number(cost.toFixed(2))
   }
 
-  // addUsername() {
-  //   this.userName = `traveler${this.travelers.id}
-  // }
 
   getDestinationsInfo(property) {
     const destinationDisplayInfo = this.destinationData.destinations.map(destination => {
