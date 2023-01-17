@@ -118,7 +118,6 @@ if (userNameInput.value &&
 function openTravelerPage() {
   loginPage.classList.add('hidden')
   travelersPage.classList.remove('hidden')
-  travelerName.innerHTML += currentTraveler.travelers.name
   }
 
 function enablePlanButton() {
@@ -126,7 +125,7 @@ function enablePlanButton() {
     planButton.disabled = false
   } else {
     planButton.disabled = true
-  }
+    }
   }
 
  setInterval(enableLoginButton, 500)
@@ -148,9 +147,8 @@ function displayPossibleDestinations() {
   }
 
 function displayingTravelersFlights() {
-  console.log("displaying")
   tripsContainer.innerHtml = ''
-  travelerName.innerHTML = currentTraveler.travelers.name
+  yearlyCost.innerHTML = `You've spent $${currentTraveler.getTripTotal()} seeing the world`
   const thisTraveler = currentTraveler.findTravelersFlights()
   console.log("This", thisTraveler)
   const eachTrip = thisTraveler.forEach(trip => {
