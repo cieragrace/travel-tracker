@@ -1,5 +1,5 @@
 import './css/styles.css';
-import { getAPIData, updateAPIData } from './apiCalls'
+// import { getAPIData, updateAPIData } from './apiCalls'
 import Traveler from './traveler';
 import TravelerRepository from './TravelerRepository'
 import * as dayjs from 'dayjs';
@@ -12,7 +12,6 @@ let trips
 let destinations
 let currentTraveler
 let allTravelers
-let today = new Date ()
 
 //---------Query Selectors--------------
 let loginPage = document.querySelector('#loginContainer')
@@ -46,6 +45,36 @@ loginButton.addEventListener("click", function (event) {
 })
 
 //-----------Functions-------------------
+function getAPIData(info) {
+  const fetchedInfo = fetch(`http://localhost:3001/api/v1/${info}`)
+    .then((res) => res.json())
+  return fetchedInfo
+}
+
+function updateAPIData(newData, endpoint) {
+  const results = fetch(`http://localhost:3001/api/v1/${endpoint}`, {
+    method: "POST",
+    body: JSON.stringify(newData),
+    headers: {
+      "Content-Type": 'application/json'
+    }
+  })
+  .then((res) => {
+    if(!res.ok) {
+      throw new Error(res.status)
+    }
+    return res.json()})
+  .then(() => {
+    getAPIData("trips")
+      .then((data) => {
+        console.log("Data:", data)
+        currentTraveler.tripsData = data
+        displayingTravelersFlights()})
+
+  })
+  .catch(error => console.log(error))
+  return results
+}
 
 function getAllData() {
   Promise.all([getAPIData('travelers'), getAPIData('trips'), getAPIData('destinations')])
@@ -69,9 +98,7 @@ function findUser() {
   const validUser = travelers.data.travelers.find(traveler => {
     return traveler.userName === userNameInput.value
   })
-  console.log("Valid:", validUser)
   currentTraveler = new Traveler(validUser, trips, destinations)
-  console.log(currentTraveler)
   openTravelerPage()
   displayingTravelersFlights()
   displayPossibleDestinations()
@@ -111,7 +138,6 @@ function displayPossibleDestinations() {
   const eachDest = possibleTrips.forEach(destination => {
   const destinationContainer = document.createElement("div")
   destinationContainer.classList.add("destinations")
-  console.log(destination)
   destinationContainer.style.backgroundImage = `url('${destination.image}')`
   const destinationName = document.createElement("p")
   destinationName.classList.add("names-of-destinations")
@@ -121,12 +147,12 @@ function displayPossibleDestinations() {
     })
   }
 
-
 function displayingTravelersFlights() {
-  travelerName.innerHTML += currentTraveler.travelers.name
-  console.log(currentTraveler.travelers.name)
-  yearlyCost.innerHTML += `You've spent $${currentTraveler.getTripTotal()} exploring the world`
+  console.log("displaying")
+  tripsContainer.innerHtml = ''
+  travelerName.innerHTML = currentTraveler.travelers.name
   const thisTraveler = currentTraveler.findTravelersFlights()
+  console.log("This", thisTraveler)
   const eachTrip = thisTraveler.forEach(trip => {
     const foundDestination = currentTraveler.destinationData.destinations.find(destination => {
       return destination.id === trip.destinationID
@@ -138,13 +164,13 @@ function displayingTravelersFlights() {
       const tripBoxp = document.createElement("h2")
       tripBoxp.classList.add("trips-divs")
       tripBoxp.innerHTML += foundDestination.destination
-      console.log(foundDestination.destination)
       tripBox.appendChild(tripBoxp)
       const tripBoxUL = document.createElement("ul")
       tripBoxUL.classList.add("trips-info")
       tripBoxUL.innerHTML += `<li>on ${trip.date}</li>
       <li>with ${trip.travelers} people</li>
-      <li>for ${trip.duration} days</li>`
+      <li>for ${trip.duration} days</li>
+      <li> status: ${trip.status}`
       tripBox.appendChild(tripBoxUL)
     }
   })
@@ -154,17 +180,16 @@ function displayFututeTripTotals() {
   if (pickedDate.value && numDays.value && numPeople.value) {
   const possibleTrips = currentTraveler.destinationData.destinations
   const eachDestination = possibleTrips.forEach(destination => {
-    console.log(destination)
     const estFlightCost = destination.estimatedFlightCostPerPerson * numPeople.value
     const estLodgingCost = destination.estimatedLodgingCostPerDay * numDays.value * numPeople.value
     const totalCost = (estFlightCost + estLodgingCost) * 1.1
-    console.log(totalCost)
     const eachTripCost = document.createElement("button")
     eachTripCost.setAttribute("id", destination.id)
-    eachTripCost.classList.add("destination-cost")
+    eachTripCost.classList.add(`destination-cost${destination.id}`)
+    eachTripCost.classList.add('destination-cost')
     eachTripCost.innerHTML += `Take a trip with ${numPeople.value} friends for ${numDays.value} days for only $${totalCost.toFixed(2)}`
     destinationCosts.appendChild(eachTripCost)
-    postTripButton = document.querySelector('.destination-cost')
+    postTripButton = document.querySelector(`.destination-cost${destination.id}`)
     postTripButton.addEventListener("click", postNewTrip)
     })
   } 
@@ -173,12 +198,10 @@ function displayFututeTripTotals() {
 function postNewTrip(event) {
   console.log(event.target)
     event.preventDefault()
-    const numTravelers = numPeople.value
+    const numTravelers = numPeople.value + 1
     const tripLength = numDays.value
     const date = pickedDate.value
     if(numTravelers && tripLength && date) {
-      console.log("trips;", trips)
-      console.log("length:", trips.length)
       const newData = {
         id: trips.trips.length + 1,
         userID: currentTraveler.travelers.id,
