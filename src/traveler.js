@@ -43,6 +43,13 @@ class Traveler {
       })
       return destinationDisplayInfo
     }
+
+    getTripsInfo(property) {
+      const eachTripsInfo = this.tripsData.trips.map(trip => {
+          return trip[property]
+        })
+        return eachTripsInfo
+      }
 }
 
 export default Traveler;

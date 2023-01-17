@@ -8,7 +8,7 @@
   <title>Travel Pro</title>
 </head>
 <body>
-  <!-- <section class="login-page-container" id="loginContainer">
+  <section class="login-page-container" id="loginContainer">
     <section class="grid-box one"></section>
     <section class="grid-box two"></section>
     <section class="grid-box three"></section>
@@ -26,17 +26,17 @@
     <section class="grid-box seven"></section>
     <section class="grid-box eight"></section>
     <section class="grid-box nine"></section>
-  </section> -->
+  </section>
 
   <!-- main -->
 
-  <section class="traveler-page-container" id="travelersPageContainer">
+  <section class="traveler-page-container hidden" id="travelersPageContainer">
     <header class="header">
       <section class="travelers-page-logo">ST</section>
       <nav>
         <p class="nav-title">Plan your next vacation: </p>
         <p class="leave-text">Departure Day</p>
-        <input aria-selected="true" class="start-date picker-box" id="datePicker" type="date">
+        <input role="tab" aria-selected="true" class="start-date picker-box" id="datePicker" type="date">
         <select role="tab" aria-selected="true" class="dropdown" id="numDays" name="Number-of-Days">
           <option class="dropdown-item" value="0">Number of Days</option>
           <option value="1">1</option>
@@ -82,18 +82,6 @@
       <article class="left-side">
         <h1>Your Past Trips</h1>
         <section class="list-trips">
-          <div class="trips-divs-container">
-            <p class="trips-divs" id="tripDivs1"></p>
-            <ul class="trips-info" id="tripInfo1"></ul>
-          </div>
-          <div class="trips-divs-container">
-            <p class="trips-divs" id="tripDivs2"></p>
-            <ul class="trips-info" id="tripInfo2"></ul>
-          </div>
-          <div class="trips-divs-container">
-            <p class="trips-divs" id="tripDivs3"></p>
-            <ul class="trips-info" id="tripInfo3"></ul>
-          </div>
         </section>
       </article>
       <section class="right-side">
@@ -103,13 +91,14 @@
       </section>
     </section>
     <footer>
-      <section class="cost-and-fee" id="annualTripCost">Yearly Trips Cost: </section>
-      <h1 class="annual-spent">spent/saved</h1>
+      <section class="show-name" id="userName"></section>
+      <h1 class="cost-and-fee" id="annualTripCost"></h1>
     </footer>
   </section>
   <script src="bundle.js"></script>
 </body>
 </html>
+
 
 
           
