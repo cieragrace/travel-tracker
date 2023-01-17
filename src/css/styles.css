@@ -8,7 +8,7 @@ html {
   height: 100vh;
 }
 
-/* .login-page-container {
+.login-page-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
@@ -105,12 +105,8 @@ html {
     background-image: url(/src/images/img7.png);
     grid-column: 3;
     grid-row: 3;
-  } */
+  } 
   
-
-   /* main page */
-
-
    .traveler-page-container {
     display: flex;
     flex-direction: column;
@@ -308,9 +304,9 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    align-content: center; */
+    align-content: center;
     border: 5px solid whitesmoke;
     border-radius: 10px;
     min-height: 325px;
