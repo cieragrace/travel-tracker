@@ -147,10 +147,10 @@ function displayPossibleDestinations() {
   }
 
 function displayingTravelersFlights() {
-  tripsContainer.innerHtml = ''
+  tripsContainer.innerHTML = ''
+  yearlyCost.innerHTML = ''
   yearlyCost.innerHTML = `You've spent $${currentTraveler.getTripTotal()} seeing the world`
   const thisTraveler = currentTraveler.findTravelersFlights()
-  console.log("This", thisTraveler)
   const eachTrip = thisTraveler.forEach(trip => {
     const foundDestination = currentTraveler.destinationData.destinations.find(destination => {
       return destination.id === trip.destinationID
