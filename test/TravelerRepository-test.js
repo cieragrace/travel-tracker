@@ -60,10 +60,10 @@ describe('TravelerRepository', () => {
   it('should supply traveler data when given an id', function () {
     expect(travelerRepository.getData(travelerRepository.data.travelers[1].id)).to.deep.equal(
       {
-        id: 2,
-        name: "Rachael Vaughten",
-        travelerType: "thrill-seeker"
-        }
+          id: 2,
+          name: "Rachael Vaughten",
+          travelerType: "thrill-seeker"
+          }
     )
   })
 })
