@@ -17,6 +17,7 @@ function updateAPIData(newData, endpoint) {
       throw new Error(res.status)
     }
     return res.json()
+  .then(updateAPIData())
   }).catch(error => console.log(error))
   return results
 }
