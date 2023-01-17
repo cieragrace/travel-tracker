@@ -35,6 +35,7 @@ describe('Traveler', () => {
         suggestedActivities: [ ]
       },
       {
+        id: 82,
         userID: 2,
         destinationID: 10,
         travelers: 5,
@@ -64,6 +65,7 @@ describe('Traveler', () => {
         suggestedActivities: [ ]
       },
       {
+        id: 56,
         userID: 2,
         destinationID: 6,
         travelers: 6,
@@ -189,6 +191,7 @@ describe('Traveler', () => {
     it('should return traverlers trips by id number', function () {
       expect(traveler2.findTravelersFlights()).to.deep.equal(
         [{
+        id: 82,
         userID: 2,
         destinationID: 10,
         travelers: 5,
@@ -198,6 +201,7 @@ describe('Traveler', () => {
         suggestedActivities: [ ] 
         }, 
         {
+        id: 56,
         userID: 2,
         destinationID: 6,
         travelers: 6,
@@ -225,11 +229,35 @@ describe('Traveler', () => {
       expect(traveler1.getTripTotal()).to.equal(2227.5)
     })
 
-    it('should give each traveler a userName based on their id number', function () {
-      expect(traveler1.addUsername()).to.equal('traveler1')
+    it('should have access to and be able to return a trip id', function() {
+      expect(traveler1.getTripsInfo("id")).to.deep.equal([3, 82, 117, 50, 56])
     })
 
-    // it('should access and return destination id', function () {
-    //   expect(traveler1.getDestinationsInfo("destination")).to.equal()
-    // })
+    it('should have access and be able to return to a trips user ids', function() {
+      expect(traveler1.getTripsInfo("userID")).to.deep.equal([ 3, 2, 1, 3, 2 ])
+    })
+
+    it('should have access and be able to return the trips destination ids', function () {
+      expect(traveler1.getTripsInfo("destinationID")).to.deep.equal([ 22, 10, 28, 16, 6 ])
+    })
+
+    it('should have access and be able to return a trips number of travelers', function () {
+      expect(traveler1.getTripsInfo("travelers")).to.deep.equal([ 4, 5, 3, 5, 6 ])
+    })
+
+    it('should have access and be able to return a trips dates', function () {
+      expect(traveler1.getTripsInfo("date")).to.deep.equal(["2022/05/22", "2019/09/27", "2021/01/09", "2020/07/02", "2020/3/28"])
+    })
+
+    it('should be able to access and return a trips duration', function () {
+      expect(traveler1.getTripsInfo("duration")).to.deep.equal([ 17, 13, 15, 17, 10 ])
+    })
+
+    it('should be able to access and return trip status', function () {
+      expect(traveler1.getTripsInfo("status")).to.deep.equal(['approved', 'approved', 'approved', 'approved', 'approved'])
+    })
+
+    it('should be able to access and return trip activities', function () {
+      expect(traveler1.getTripsInfo("suggestedActivities")).to.deep.equal([[], [], [], [], []])
+    })
   })
