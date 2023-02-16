@@ -1,4 +1,4 @@
-import './css/styles.css';
+import '../src/css/styles.css'
 // import { getAPIData, updateAPIData } from './apiCalls'
 import Traveler from './traveler';
 import TravelerRepository from './TravelerRepository'
@@ -89,9 +89,10 @@ function getAllData() {
 }
 
 function addUsername() {
-  return allTravelers = travelers.data.travelers.forEach(traveler => {
+  const allTravelers = travelers.data.travelers.forEach(traveler => {
     traveler.userName = `traveler${traveler.id}`
   })
+  return all
 }
 
 function findUser() {
