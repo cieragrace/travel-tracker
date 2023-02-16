@@ -771,7 +771,7 @@ var __webpack_exports__ = {};
 (() => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _src_css_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _traveler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 /* harmony import */ var _TravelerRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(17);
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
@@ -867,9 +867,10 @@ function getAllData() {
 }
 
 function addUsername() {
-  return allTravelers = travelers.data.travelers.forEach(traveler => {
+  const allTravelers = travelers.data.travelers.forEach(traveler => {
     traveler.userName = `traveler${traveler.id}`
   })
+  return all
 }
 
 function findUser() {
