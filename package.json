@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    // "url": "git+https://github.com/cieragrace/travel-tracker",
     "homepage": "http://cieragrace.github.io/travel-tracker"
   },
   "author": "Turing School of Software and Design",

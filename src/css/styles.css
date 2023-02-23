@@ -5,7 +5,8 @@
 
 body,
 html {
-  height: 100vh;
+  height: 100%;
+  width: 100%
 }
 
 .login-page-container {
@@ -13,16 +14,16 @@ html {
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
   grid-template-rows: 1fr 1fr 1fr;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 .grid-box {
   border: 5px solid #3A7E85;
   background-size:cover;
   background-repeat: no-repeat;
-  height: 33vh;
-  width: 25vw;
+  height: 33%;
+  width: 25%;
 }
 
 .one {
@@ -35,8 +36,8 @@ html {
   background-image: url('/src/images/login-logo.png');
   grid-row: 1;
   grid-column: 2 / 3;
-  width: 50vw;
-  height: 33vh;
+  width: 50%;
+  height: 33%;
 }
 
 .three {
@@ -54,15 +55,15 @@ html {
   .five {
     grid-row: 2;
     grid-column: 2 / 3;
-    width: 50vw;
-    height: 33vh;
+    width: 50%;
+    height: 33%;
   }
 
   .formBox {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 33vh;
+    max-height: 33%;
   }
 
   h1 {
@@ -115,16 +116,16 @@ html {
     background-size:cover;
     background-repeat: no-repeat;
     opacity: 75%;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
    }
 
    .header {
     flex-direction: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 20vh;
-    width: 100vw;
+    height: 20%;
+    width: 100%;
    }
 
    .travelers-page-logo {
@@ -154,7 +155,7 @@ html {
     top: 0;
     margin-left: 300px;
     margin-top: 50px;
-    width: 85vw;
+    width: 85%;
     height: 100px;
    }
 
@@ -196,15 +197,15 @@ html {
     display: flex;
     flex-direction: row;
 	  align-items: center;
-    height: 90vh;
-    width: 100vw;
+    height: 90%;
+    width: 100%;
    }
 
    .left-side {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    width: 35vw;
+    width: 35%;
     border-radius: 10px;
     height: 700px;
    }
@@ -265,7 +266,7 @@ html {
    }
 
    .cost-and-fee {
-    width: 60vw;
+    width: 60%;
     height: 100px;
     font-size: 50px;
     color: antiquewhite;
@@ -280,7 +281,7 @@ html {
     flex-direction: column;
     align-items: baseline;
     justify-content: center;
-    width: 65vw;
+    width: 65%;
     border: 5px whitesmoke solid;
     border-radius: 10px;
     padding-left: 50px;
@@ -297,7 +298,7 @@ html {
    }
 
   .list-destinations {
-    width: 60vw;
+    width: 60%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -328,7 +329,7 @@ html {
    }
 
    .list-destination-costs {
-    width: 60vw;
+    width: 60%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -354,7 +355,7 @@ html {
     flex-direction: row;
     justify-content: space-between;
 	  align-items: center;
-    height: 10vh;
+    height: 10%;
    }
 
    .annual-spent {
@@ -365,7 +366,7 @@ html {
 
    .show-name {
     height: 100px;
-    width: 40vw;
+    width: 40%;
     color: whitesmoke;
    }
 
